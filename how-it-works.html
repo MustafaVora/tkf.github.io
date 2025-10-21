@@ -1,22 +1,55 @@
 ==== how-it-works.html ====
-.card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
-.label{font-weight:700;margin-top:10px}
-.price{color:var(--accent);font-weight:800}
-.site-footer{margin-top:36px;padding:18px 0;border-top:1px solid rgba(0,0,0,0.03)}
-.footer-inner{display:flex;justify-content:space-between;align-items:center}
-.muted{color:var(--muted)}
-.promises{display:flex;gap:12px;margin-top:16px}
-.promise{background:linear-gradient(180deg,#fff,#fff0e6);padding:10px;border-radius:8px;flex:1}
-.steps{margin-top:12px;padding-left:18px}
-.qa{margin-top:10px}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
-.contact-card{background:var(--card);padding:14px;border-radius:10px;box-shadow:var(--shadow)}
-.contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #efefef;margin-top:6px}
-.small{font-size:13px}
-@media (max-width:900px){
-.hero{grid-template-columns:1fr}
-.frame-mock{width:260px;height:200px}
-.contact-grid{grid-template-columns:1fr}
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How it works — The King of Frames</title>
+  <meta name="description" content="How to customize and order from The King of Frames." />
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">KOF</div>
+        <div>
+          <h1 class="brand-title">The King of Frames</h1>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="how-it-works.html" class="nav-link active">How it works</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
 
+  <main class="container">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><strong>Choose a frame:</strong> Browse our collection and pick the design you love.</li>
+      <li><strong>Upload or send a photo:</strong> Use the customize button or message us on WhatsApp.</li>
+      <li><strong>Preview:</strong> See a live preview. We offer free crop and colour adjustments on request.</li>
+      <li><strong>Confirm & pay:</strong> Use the simple checkout (email order) — we’ll confirm and start making your frame.</li>
+      <li><strong>Ship:</strong> We pack carefully and ship within 3–5 business days.</li>
+    </ol>
 
+    <div class="faq">
+      <h3>FAQs</h3>
+      <div class="qa"><strong>Do you accept custom sizes?</strong><div class="muted">Yes — message us with dimensions and we’ll quote.</div></div>
+      <div class="qa"><strong>Can I get a gift note?</strong><div class="muted">Yes — add a short note when placing the order.</div></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>The King of Frames</div>
+      <div class="muted">Handmade in India with care</div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
