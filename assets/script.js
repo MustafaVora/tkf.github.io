@@ -1,3 +1,6 @@
+// assets/script.js
+
+// Product List
 const products = [
   { name: "Classic Wood", image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=60" },
   { name: "Golden Glow", image: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=600&q=60" },
@@ -13,15 +16,24 @@ const products = [
   { name: "Dream Frame", image: "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?auto=format&fit=crop&w=600&q=60" }
 ];
 
+// Dynamically Load Product Grid
 const container = document.getElementById("productGrid");
 if (container) {
-  products.forEach(p => {
+  products.forEach(product => {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}">
-      <h3>${p.name}</h3>
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
     `;
     container.appendChild(card);
+  });
+}
+
+// WhatsApp Button Scroll Animation
+const whatsappBtn = document.querySelector(".whatsapp-float");
+if (whatsappBtn) {
+  window.addEventListener("scroll", () => {
+    whatsappBtn.style.opacity = window.scrollY > 200 ? "1" : "0.7";
   });
 }
