@@ -2,7 +2,7 @@
 
 // Product List
 const products = [
-  { name: "Classic Wood", image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=60" },
+  { name: "Classic Wood", image: "https://photoframing.in/wp-content/uploads/2025/03/family-photo-frame-8x5-inches-classic-wooden-photo-frame.jpg?auto=format&fit=crop&w=600&q=60" },
   { name: "Golden Glow", image: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=600&q=60" },
   { name: "Rustic Heart", image: "https://images.unsplash.com/photo-1499084732479-de2c02d45fc4?auto=format&fit=crop&w=600&q=60" },
   { name: "Black Marble", image: "https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=600&q=60" },
