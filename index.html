@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The King of Frames — Warm, handcrafted photo frames</title>
+  <meta name="description" content="The King of Frames — handcrafted, customizable photo frames that turn memories into keepsakes. Preview, customize, order." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff7ed;--card:#fff;--muted:#6b5b4a;--accent:#b5651d;--accent-2:#c77c4b;--shadow:0 10px 30px rgba(39,30,24,0.06)}
+    *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{margin:0;background:var(--bg);color:#2b2b2b;-webkit-font-smoothing:antialiased}
+    .container{max-width:1200px;margin:36px auto;padding:20px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#f6d6c3,#f0a66b);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Playfair Display',serif;color:#402a1f}
+    h1{margin:0;font-family:'Playfair Display',serif;font-size:22px;color:#402a1f}
+    .nav a{margin-left:14px;color:var(--muted);text-decoration:none;font-weight:600}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
+    .hero h2{font-family:'Playfair Display',serif;font-size:34px;margin:0;color:#402a1f}
+    .lead{color:var(--muted);margin-top:8px;font-size:16px}
+    .punch{display:inline-block;background:linear-gradient(90deg,#ffedd5,#fee6d6);padding:6px 10px;border-radius:999px;color:#7a4a2f;font-weight:700;margin-top:12px}
+
+    /* Products grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:24px}
+    .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--shadow);overflow:hidden}
+    .card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+    .label{font-weight:700;margin-top:10px;color:#3b2b23}
+    .muted{color:var(--muted);font-size:14px}
+    .price{font-weight:800;color:var(--accent);}
+    .btn{background:var(--accent);color:white;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+
+    /* Aside preview */
+    .custom-panel{background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+    .frame-mock{width:320px;height:260px;border:14px solid #b57a52;background:white;box-shadow:0 12px 30px rgba(39,30,24,0.08);display:flex;align-items:center;justify-content:center}
+    .frame-mock img{max-width:100%;max-height:100%;object-fit:cover}
+
+    /* Features */
+    .features{display:flex;gap:12px;margin-top:18px}
+    .feature{background:linear-gradient(180deg,#fff,#fff0e6);padding:12px;border-radius:10px;flex:1;box-shadow:0 6px 18px rgba(39,30,24,0.03)}
+
+    /* Footer */
+    footer{margin-top:36px;color:var(--muted);font-size:14px;text-align:center}
+
+    /* Responsive */
+    @media (max-width:880px){.hero{grid-template-columns:1fr}.frame-mock{width:260px;height:200px}.grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">KOF</div>
+        <div>
+          <h1>The King of Frames</h1>
+          <div class="muted">Handcrafted, warm keepsakes — made for the people you love</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#collections">Collections</a>
+        <a href="#how">How it works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="punch">Frame the moment — keep the feeling</div>
+        <h2>Warm frames. Honest prices. Handmade with care.</h2>
+        <p class="lead">Choose a style, upload a photo, preview instantly — we print, frame, and ship. Perfect gifts for family, friends and the people who matter.</p>
+
+        <div class="features" aria-hidden="true">
+          <div class="feature"><strong>Fast turnaround</strong><div class="muted">Orders ready in 3–5 business days</div></div>
+          <div class="feature"><strong>Free design help</strong><div class="muted">Need a crop or colour fix? We’ll help</div></div>
+          <div class="feature"><strong>Eco materials</strong><div class="muted">Sustainably sourced frames & packaging</div></div>
+        </div>
+
+        <div id="collections" class="grid"></div>
+
+      </div>
+
+      <aside>
+        <div class="custom-panel">
+          <div style="font-weight:700">Live preview</div>
+          <div style="margin-top:12px;display:flex;justify-content:center">
+            <div class="frame-mock" id="live-frame"><div style="color:var(--muted);padding:10px;text-align:center">Drop an image here or use the customize button</div></div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:12px;justify-content:space-between;align-items:center">
+            <div class="muted">Starting at <span class="price">₹499</span></div>
+            <div><button class="btn" id="open-custom">Customize</button></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Customization panel (hidden initially) -->
+    <div id="custom-panel" style="display:none;margin-top:18px">
+      <div class="custom-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Customize — The King of Frames</div>
+          <div><button id="close-custom">Close</button></div>
+        </div>
+        <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label class="muted">Upload photo</label>
+            <input type="file" id="photo-input" accept="image/*">
+
+            <div style="margin-top:10px">
+              <label class="muted">Frame style</label>
+              <select id="frame-style">
+                <option value="oak">Classic Oak</option>
+                <option value="walnut">Hand-polished Walnut</option>
+                <option value="slim">Slim Black</option>
+                <option value="gold">Ornate Gold</option>
+              </select>
+            </div>
+
+            <div style="margin-top:10px">
+              <label class="muted">Mat colour</label>
+              <select id="mat-color">
+                <option value="#ffffff">White</option>
+                <option value="#f3f1ee">Ivory</option>
+                <option value="#f7e9dd">Warm oatmeal</option>
+                <option value="#000000">Charcoal</option>
+              </select>
+            </div>
+
+            <div style="margin-top:10px">
+              <label class="muted">Size</label>
+              <select id="size">
+                <option value="8x10">8×10"</option>
+                <option value="12x16">12×16"</option>
+                <option value="A3">A3</option>
+                <option value="A2">A2</option>
+              </select>
+            </div>
+
+            <div style="margin-top:12px">
+              <button class="btn" id="add-to-cart">Add to cart — <span class="price">₹499</span></button>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-weight:700">Preview</div>
+            <div style="margin-top:10px;background:#fff;padding:12px;border-radius:8px">
+              <div class="frame-mock" id="preview-area">
+                <img id="preview-img" src="" alt="Preview" style="max-width:100%;max-height:100%;display:none;object-fit:cover"/>
+              </div>
+            </div>
+            <div style="margin-top:10px" class="muted">Tip: use high-resolution photos for crisp prints.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <section style="margin-top:22px">
+      <h3 style="margin:0;font-family:'Playfair Display',serif;color:#402a1f">Loved by customers</h3>
+      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow)">
+          <div style="font-weight:700">"Perfect wedding gift — everyone cried"</div>
+          <div class="muted">— Priya (Mumbai)</div>
+        </div>
+        <div style="flex:1;min-width:220px;background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow)">
+          <div style="font-weight:700">"Fantastic finish, great value"</div>
+          <div class="muted">— Anil (Pune)</div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div style="margin-top:18px">Made with care · The King of Frames</div>
+      <div class="muted">Replace the hidden form email before you publish to receive orders.</div>
+    </footer>
+  </div>
+
+  <!-- Cart button -->
+  <button style="position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;padding:12px;border-radius:999px;border:0;box-shadow:0 8px 24px rgba(181,122,82,0.24);cursor:pointer" id="view-cart">Cart (<span id="cart-count">0</span>)</button>
+
+  <!-- Hidden order form -->
+  <form id="order-form" action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST" style="display:none">
+    <input type="hidden" name="_subject" value="New frame order" />
+    <input type="hidden" name="order_data" id="order-data" />
+  </form>
+
+  <script>
+    // Warm product collection (sample images use Unsplash queries; replace with your own images when ready)
+    const products = [
+      {id:1,name:'Classic Oak - 8x10',price:499,desc:'Hand-sanded oak frame',img:'https://source.unsplash.com/collection/928423/800x600?wood-frame'},
+      {id:2,name:'Slim Black - 8x10',price:549,desc:'Modern minimal slim black frame',img:'https://source.unsplash.com/800x600/?black-frame'},
+      {id:3,name:'Hand-Polished Walnut - 12x16',price:799,desc:'Rich walnut with soft sheen',img:'https://source.unsplash.com/800x600/?walnut-frame'},
+      {id:4,name:'Ornate Gold - A3',price:1199,desc:'Statement ornate gold finish',img:'https://source.unsplash.com/800x600/?gold-frame'},
+      {id:5,name:'Floating Glass - 12x16',price:899,desc:'Floating look with glass front',img:'https://source.unsplash.com/800x600/?floating-frame'},
+      {id:6,name:'Rustic Pine - 8x10',price:499,desc:'Weathered pine for cosy spaces',img:'https://source.unsplash.com/800x600/?rustic-frame'},
+      {id:7,name:'Matte White - 12x16',price:649,desc:'Soft white for contemporary homes',img:'https://source.unsplash.com/800x600/?white-frame'},
+      {id:8,name:'Bevelled Black - A3',price:1299,desc:'Deep bevel with luxe black finish',img:'https://source.unsplash.com/800x600/?bevel-frame'},
+      {id:9,name:'Heritage Maple - 8x10',price:599,desc:'Warm maple grain',img:'https://source.unsplash.com/800x600/?maple-frame'},
+      {id:10,name:'Handpainted - 12x16',price:999,desc:'Unique handpainted patina',img:'https://source.unsplash.com/800x600/?handpainted-frame'},
+      {id:11,name:'Collage Frame - Multi',price:1199,desc:'Arrange multiple photos in one frame',img:'https://source.unsplash.com/800x600/?collage-frame'},
+      {id:12,name:'Canvas Wrap - A2',price:1499,desc:'Canvas print wrapped on wood',img:'https://source.unsplash.com/800x600/?canvas-print'}
+    ];
+
+    const productsEl = document.getElementById('collections');
+    function renderProducts(){
+      productsEl.innerHTML = '';
+      products.forEach(p => {
+        const div = document.createElement('div'); div.className='card';
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.name}">
+          <div class=\"label\">${p.name}</div>
+          <div class=\"muted\">${p.desc}</div>
+          <div style=\"display:flex;justify-content:space-between;align-items:center;margin-top:10px\">
+            <div class=\"price\">₹${p.price}</div>
+            <button class=\"btn\" onclick=\"openCustomFor(${p.id})\">Customize</button>
+          </div>`;
+        productsEl.appendChild(div);
+      });
+    }
+    renderProducts();
+
+    // Panel controls
+    const customPanel = document.getElementById('custom-panel');
+    document.getElementById('open-custom').addEventListener('click', ()=> customPanel.style.display='block');
+    document.getElementById('close-custom').addEventListener('click', ()=> customPanel.style.display='none');
+
+    function openCustomFor(id){
+      const p = products.find(x=>x.id===id);
+      document.querySelector('#add-to-cart .price')?.textContent = p.price;
+      document.querySelector('.price') && (document.querySelector('.price').textContent = '₹'+p.price);
+      customPanel.style.display='block';
+      // set default selection values
+      document.getElementById('size').value = p.name.includes('12x16') ? '12x16' : (p.name.includes('A2')? 'A2' : '8x10');
+    }
+
+    // Image preview & customization
+    const photoInput = document.getElementById('photo-input');
+    const previewImg = document.getElementById('preview-img');
+    const previewArea = document.getElementById('preview-area');
+    const matColor = document.getElementById('mat-color');
+    const frameStyle = document.getElementById('frame-style');
+    const sizeSelect = document.getElementById('size');
+
+    photoInput.addEventListener('change', (e)=>{
+      const f = e.target.files[0];
+      if(!f) return;
+      const url = URL.createObjectURL(f);
+      previewImg.src = url; previewImg.style.display='block';
+      document.getElementById('live-frame').innerHTML = '';
+      const img = document.createElement('img'); img.src=url; img.style.maxWidth='100%'; img.style.maxHeight='100%';
+      document.getElementById('live-frame').appendChild(img);
+    });
+
+    matColor.addEventListener('change', ()=>{
+      previewArea.style.background=matColor.value;
+    });
+
+    frameStyle.addEventListener('change', ()=>{
+      const style = frameStyle.value;
+      if(style==='oak') previewArea.style.borderColor='#b57a52';
+      if(style==='walnut') previewArea.style.borderColor='#6b3b2a';
+      if(style==='slim') previewArea.style.borderColor='#111827';
+      if(style==='gold') previewArea.style.borderColor='#d4af37';
+    });
+
+    sizeSelect.addEventListener('change', ()=>{
+      const s=sizeSelect.value;
+      let mult=1;
+      if(s==='8x10') mult=1; if(s==='12x16') mult=1.6; if(s==='A3') mult=2; if(s==='A2') mult=3;
+      const base = parseInt(document.querySelector('.price')?.textContent.replace(/[₹,]/g,'')||'499',10);
+      const newPrice = Math.round(base * mult);
+      document.querySelectorAll('.price').forEach(el=>el.textContent = '₹'+newPrice);
+    });
+
+    // Cart
+    const cartBtn = document.getElementById('view-cart');
+    const cartCount = document.getElementById('cart-count');
+    function getCart(){return JSON.parse(localStorage.getItem('kof_cart')||'[]');}
+    function saveCart(c){localStorage.setItem('kof_cart',JSON.stringify(c));updateCartUi();}
+    function updateCartUi(){const c=getCart();cartCount.textContent=c.length}
+    updateCartUi();
+
+    document.getElementById('add-to-cart').addEventListener('click', ()=>{
+      const item = {id:Date.now(),style:frameStyle.value,mat:matColor.value,size:sizeSelect.value,price:document.querySelector('.price')?.textContent||'₹499'};
+      const c=getCart();c.push(item);saveCart(c);alert('Added to cart');
+    });
+
+    cartBtn.addEventListener('click', ()=>{
+      const c = getCart();
+      if(!c.length){alert('Cart is empty');return}
+      const summary = c.map(it=>`${it.size} | ${it.style} | ${it.price}`).join('
+');
+      if(confirm('Place order?
+
+'+summary+'
+
+Press OK to submit order via email.')){
+        document.getElementById('order-data').value = JSON.stringify(c);
+        document.getElementById('order-form').submit();
+      }
+    });
+
+    // Drag & drop on live frame
+    const liveFrame = document.getElementById('live-frame');
+    liveFrame.addEventListener('dragover', (e)=>{e.preventDefault();liveFrame.style.opacity=0.9});
+    liveFrame.addEventListener('dragleave', ()=>liveFrame.style.opacity=1);
+    liveFrame.addEventListener('drop', (e)=>{
+      e.preventDefault(); liveFrame.style.opacity=1;
+      const f = e.dataTransfer.files[0];
+      if(!f) return; const url = URL.createObjectURL(f);
+      liveFrame.innerHTML=''; const img = document.createElement('img'); img.src=url; img.style.maxWidth='100%'; img.style.maxHeight='100%'; img.style.objectFit='cover'; liveFrame.appendChild(img);
+    });
+
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') customPanel.style.display='none'} )
+  </script>
+</body>
+</html>
